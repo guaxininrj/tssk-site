@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T.S.S.K.</title>
+<meta name="description" content="T.S.S.K. — Tradição, fé e caminho.">
+<style>
+  :root{
+    --verde:#00a859; --azul:#0064b4; --verm:#d40000;
+    --fundo:#060607; --card:#0e0e10; --prata:#e8e8ea; --cinza:#9a9aa0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{background:var(--fundo);scroll-behavior:smooth}
+  body{font-family:'Segoe UI',system-ui,sans-serif;background-color:var(--fundo);color:var(--prata);overflow-x:hidden}
+
+  /* ===== PÁGINAS (abas) ===== */
+  .pagina{display:none}
+  section.pagina.ativa{display:block}
+  header.pagina.ativa{display:block}
+
+  /* ===== MENU ===== */
+  .navwrap{position:sticky;top:0;z-index:100;overflow:hidden;
+    background:rgba(8,8,9,.92);
+    border-bottom:1px solid rgba(0,100,180,.45);box-shadow:0 6px 24px rgba(0,0,0,.6)}
+  nav{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;padding:12px 16px}
+  nav a{color:var(--prata);text-decoration:none;font-weight:700;font-size:.85rem;letter-spacing:.1em;
+    text-transform:uppercase;padding:8px 16px;border-radius:10px;transition:.25s;
+    background:linear-gradient(180deg,rgba(0,100,180,.16),rgba(0,168,89,.07));
+    border:1px solid rgba(0,100,180,.55);
+    box-shadow:0 3px 10px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.07)}
+  nav a:hover{color:#fff;border-color:rgba(0,168,89,.8);
+    box-shadow:0 0 18px rgba(0,168,89,.35), inset 0 0 0 1px rgba(0,168,89,.5)}
+  nav a.ativo{color:#fff;background:linear-gradient(180deg,rgba(212,0,0,.30),rgba(212,0,0,.12));
+    border-color:rgba(212,0,0,.8);
+    box-shadow:0 0 18px rgba(212,0,0,.45), inset 0 0 0 1px rgba(212,0,0,.7)}
+
+  /* feixe tricolor correndo na linha do menu */
+  .navwrap::after{content:"";position:absolute;bottom:-1px;left:0;height:2px;width:34%;
+    background:linear-gradient(90deg,transparent,var(--verde),#fff,var(--azul),#fff,var(--verm),transparent);
+    filter:drop-shadow(0 0 6px rgba(0,100,180,.9));
+    animation:corrLinha 4.5s linear infinite;pointer-events:none}
+  @keyframes corrLinha{0%{left:-34%}100%{left:100%}}
+
+  /* ===== HERO — VÍDEO TELA CHEIA ===== */
+  header{position:relative;height:calc(100vh - 58px);height:calc(100dvh - 58px);overflow:hidden}
+  .video-fundo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+  .veu{position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(6,6,7,.55) 0%,transparent 25%,transparent 70%,rgba(6,6,7,.85) 100%)}
+  /* bandeira cigana com transparência baixa por cima do vídeo */
+  .bandeira{position:absolute;inset:0;pointer-events:none;opacity:.22;
+    background:url('bandeira.jpg') center/cover no-repeat}
+  /* logo no centro da roda da bandeira */
+  .logo-roda{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:max(20vw,34vh);pointer-events:none;
+    filter:drop-shadow(0 6px 22px rgba(0,0,0,.75))}
+  /* listras de filtro (efeito scanline) */
+  .listras{position:absolute;inset:0;pointer-events:none;opacity:.85;
+    background:repeating-linear-gradient(0deg,rgba(0,0,0,.38) 0px,rgba(0,0,0,.38) 2px,transparent 2px,transparent 5px)}
+  .hero-conteudo{position:absolute;left:0;right:0;bottom:7vh;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:0 20px}
+  .hero-conteudo img{width:min(150px,32vw);filter:drop-shadow(0 8px 24px rgba(0,0,0,.8))}
+  .hero-conteudo h1{color:#fff;font-size:1.9rem;font-weight:800;letter-spacing:.08em;text-shadow:0 2px 18px rgba(0,0,0,.9)}
+  .hero-conteudo p{color:var(--prata);font-size:1rem;letter-spacing:.25em;text-transform:uppercase;text-shadow:0 2px 12px rgba(0,0,0,.9)}
+  .faixa{display:flex;gap:0;height:5px;width:min(260px,60vw);border-radius:3px;overflow:hidden;box-shadow:0 0 14px rgba(0,0,0,.6)}
+  .faixa span{flex:1}
+  .faixa .f1{background:var(--azul)}
+  .faixa .f2{background:var(--verde)}
+  .faixa .f3{background:var(--verm)}
+
+  /* botão de som */
+  .btn-som{position:absolute;right:18px;bottom:18px;z-index:5;width:52px;height:52px;border-radius:50%;
+    border:1px solid rgba(255,255,255,.35);background:rgba(6,6,7,.55);color:#fff;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;transition:.25s;backdrop-filter:blur(4px)}
+  .btn-som:hover{background:rgba(0,168,89,.5);border-color:var(--verde)}
+  .btn-som svg{width:24px;height:24px;fill:#fff}
+
+  /* ===== SEÇÕES ===== */
+  section{max-width:1080px;margin:0 auto;padding:64px 24px 30px}
+  h2{color:#fff;font-size:1.6rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+  h2::after{content:"";display:block;margin-top:10px;height:4px;width:120px;border-radius:2px;
+    background:linear-gradient(90deg,var(--azul) 0 33%,var(--verde) 33% 66%,var(--verm) 66% 100%)}
+  .sub{color:var(--cinza);margin-bottom:26px}
+  .em-breve{border:1px dashed rgba(0,100,180,.5);border-radius:16px;padding:48px 24px;text-align:center;
+    color:var(--cinza);letter-spacing:.2em;text-transform:uppercase;background:var(--card)}
+
+  footer{text-align:center;padding:24px;color:var(--cinza);font-size:.85rem;letter-spacing:.15em;
+    border-top:1px solid rgba(0,100,180,.3);position:relative;overflow:hidden}
+  footer b{color:var(--verde)}
+  footer::after{content:"";position:absolute;top:-1px;left:0;height:2px;width:34%;
+    background:linear-gradient(90deg,transparent,var(--verde),#fff,var(--azul),#fff,var(--verm),transparent);
+    filter:drop-shadow(0 0 6px rgba(0,100,180,.9));
+    animation:corrLinha 4.5s linear infinite;pointer-events:none}
+
+  @media (max-width:640px){
+    nav{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:10px 12px}
+    nav::-webkit-scrollbar{display:none}
+    nav a{flex-shrink:0;white-space:nowrap;font-size:.74rem;padding:8px 13px}
+    header{height:calc(100vh - 52px);height:calc(100dvh - 52px)}
+    .hero-conteudo h1{font-size:1.35rem}
+    .hero-conteudo p{font-size:.8rem}
+  }
+</style>
+</head>
+<body>
+
+<div class="navwrap">
+<nav id="menu">
+  <a href="#inicio">Início</a>
+  <a href="#sobre">Quem somos</a>
+  <a href="#trabalhos">Trabalhos</a>
+  <a href="#contato">Contato</a>
+</nav>
+</div>
+
+<header id="inicio" class="pagina">
+  <video id="vfundo" class="video-fundo" autoplay muted loop playsinline poster="tssk-poster.jpg">
+    <source src="tssk-home.mp4" type="video/mp4">
+  </video>
+  <div class="bandeira"></div>
+  <div class="listras"></div>
+  <div class="veu"></div>
+  <img class="logo-roda" src="logo-tssk.png" alt="T.S.S.K.">
+  <div class="hero-conteudo">
+    <h1>T.S.S.K.</h1>
+    <div class="faixa"><span class="f1"></span><span class="f2"></span><span class="f3"></span></div>
+    <p>Pelos caminhos de São Francisco de Assis</p>
+  </div>
+  <button class="btn-som" id="btnSom" aria-label="Ativar som">
+    <svg id="icoMudo" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.8-1-3.3-2.5-4v8c1.5-.7 2.5-2.2 2.5-4zM19 3.3l-1.4 1.4C19.9 6.3 21 9 21 12s-1.1 5.7-3.4 7.3L19 20.7c2.7-2 4-5.2 4-8.7s-1.3-6.7-4-8.7z" opacity=".35"/><path d="M2.8 2.8 1.4 4.2 6.2 9H3v6h4l5 5v-6.8l4.3 4.3c-.6.4-1.2.8-1.8 1v2.1c1.2-.3 2.3-.9 3.3-1.6l2 2 1.4-1.4L2.8 2.8z"/></svg>
+    <svg id="icoSom" viewBox="0 0 24 24" style="display:none"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.8-1-3.3-2.5-4v8c1.5-.7 2.5-2.2 2.5-4zM14 3.2v2.1c2.9.9 5 3.5 5 6.7s-2.1 5.8-5 6.7v2.1c4-.9 7-4.5 7-8.8s-3-7.9-7-8.8z"/></svg>
+  </button>
+</header>
+
+<section id="sobre" class="pagina">
+  <h2>Quem somos</h2>
+  <p class="sub">A história e a tradição do T.S.S.K.</p>
+  <div class="em-breve">Em construção</div>
+</section>
+
+<section id="trabalhos" class="pagina">
+  <h2>Trabalhos</h2>
+  <p class="sub">Consultas, orientação e trabalhos espirituais.</p>
+  <div class="em-breve">Em construção</div>
+</section>
+
+<section id="contato" class="pagina">
+  <h2>Contato</h2>
+  <p class="sub">Fale com a gente.</p>
+  <div class="em-breve">Em construção</div>
+</section>
+
+<footer><b>T.S.S.K.</b> © 2026</footer>
+
+<script>
+(function(){
+  // vídeo menor no celular
+  var v = document.getElementById('vfundo');
+  if (window.innerWidth <= 640) {
+    v.querySelector('source').src = 'tssk-home-mobile.mp4';
+    v.load(); v.play().catch(function(){});
+  }
+
+  // botão de som
+  var btn = document.getElementById('btnSom');
+  var mudo = document.getElementById('icoMudo');
+  var som = document.getElementById('icoSom');
+  btn.addEventListener('click', function(){
+    v.muted = !v.muted;
+    mudo.style.display = v.muted ? '' : 'none';
+    som.style.display = v.muted ? 'none' : '';
+    if (!v.muted) v.play().catch(function(){});
+  });
+
+  // abas
+  var ids = ['inicio','sobre','trabalhos','contato'];
+  function mostrar(id){
+    if (ids.indexOf(id) < 0) id = 'inicio';
+    document.querySelectorAll('.pagina').forEach(function(s){ s.classList.remove('ativa'); });
+    document.getElementById(id).classList.add('ativa');
+    document.querySelectorAll('nav a').forEach(function(a){
+      a.classList.toggle('ativo', a.getAttribute('href') === '#' + id);
+    });
+    if (id === 'inicio') { v.play().catch(function(){}); } else { v.pause(); }
+    window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange', function(){ mostrar(location.hash.slice(1)); });
+  mostrar(location.hash.slice(1));
+})();
+</script>
+</body>
+</html>
