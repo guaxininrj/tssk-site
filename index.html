@@ -96,8 +96,20 @@
     box-shadow:0 0 22px rgba(20,150,70,.45),0 12px 30px rgba(0,0,0,.6);transition:.25s;margin-top:10px}
   .btn-zap:hover{transform:translateY(-3px);box-shadow:0 0 34px rgba(20,150,70,.65),0 16px 40px rgba(0,0,0,.7)}
   .btn-zap svg{width:22px;height:22px;fill:#fff}
-  #contato{text-align:center}
-  #contato h2::after{margin-left:auto;margin-right:auto}
+  #contato,#roda{text-align:center}
+  #contato h2::after,#roda h2::after{margin-left:auto;margin-right:auto}
+  /* card de evento */
+  .evento{max-width:600px;margin:0 auto 6px;background:#fff;border-radius:16px;padding:24px 28px 26px;
+    text-align:left;box-shadow:0 14px 34px rgba(0,0,0,.12);position:relative;overflow:hidden}
+  .evento::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;
+    background:linear-gradient(90deg,var(--azul) 0 33%,var(--verde) 33% 66%,var(--verm) 66% 100%)}
+  .evento h3{color:#083d33;font-size:1.15rem;margin:6px 0 14px;letter-spacing:.04em}
+  .ev-item{margin-bottom:12px}
+  .ev-item span{display:block;font-size:.72rem;font-weight:800;letter-spacing:.18em;color:#0064b4;
+    text-transform:uppercase;margin-bottom:2px}
+  .ev-item p{color:#233; font-size:1rem}
+  .ev-hora{display:inline-block;background:#dff8f2;border:1px solid rgba(0,100,180,.3);border-radius:8px;
+    padding:4px 14px;font-weight:800;color:#083d33}
   .endereco{margin-top:26px;color:#3f6f64;font-size:1rem;line-height:1.6}
   .endereco b{color:#083d33;display:block;font-size:1.05rem;letter-spacing:.05em}
   .btn-waze{display:inline-flex;align-items:center;gap:10px;background:#0891d1;color:#fff;
@@ -171,7 +183,23 @@
 <section id="roda" class="pagina">
   <h2>Roda Cigana</h2>
   <p class="sub">Consultas, orientação e trabalhos.</p>
-  <div class="em-breve">Em construção</div>
+
+  <div class="evento">
+    <h3>🔮 Próxima Roda Cigana</h3>
+    <div class="ev-item"><span>Data</span><p>domingo, 19 de julho de 2026</p></div>
+    <div class="ev-item"><span>Horário</span><p class="ev-hora">10:00</p></div>
+    <div class="ev-item"><span>Local</span><p>Rua do Registro, 315 — Beco do Amor, Senador Camará, Rio de Janeiro - RJ</p></div>
+  </div>
+
+  <a class="btn-waze" href="https://waze.com/ul?q=Rua%20do%20Registro%20315%2C%20Senador%20Camar%C3%A1%2C%20Rio%20de%20Janeiro&navigate=yes" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="#fff"><path d="M12 2C7 2 3 5.9 3 10.7c0 2.1.8 4 2.1 5.5-.2.6-.7 1.5-1.8 2.2-.3.2-.4.6-.2.9.1.3.4.5.8.5 1.9 0 3.3-.6 4.2-1.2.9.3 2 .5 3 .5h.4c.2 1.6 1.6 2.9 3.2 2.9 1.8 0 3.2-1.4 3.2-3.2 0-.4-.1-.8-.2-1.1C19.9 16 21 13.5 21 10.7 21 5.9 17 2 12 2zm-3.5 8.2c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm7 0c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm-6.4 2.6c.3-.2.7-.1.9.2.5.7 1.4 1.2 2.5 1.2s2-.5 2.5-1.2c.2-.3.6-.4.9-.2.3.2.4.6.2.9-.8 1.1-2.1 1.8-3.6 1.8s-2.8-.7-3.6-1.8c-.2-.3-.1-.7.2-.9z"/></svg>
+    Como chegar pelo Waze
+  </a>
+  <br>
+  <a class="btn-zap" href="https://wa.me/5521975486558?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20pr%C3%B3xima%20Roda%20Cigana." target="_blank" rel="noopener">
+    <svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.5c1.7.9 3.7 1.5 5.8 1.5 6.6 0 12-5.4 12-12S22.6 3 16 3zm6.1 16.9c-.3.8-1.5 1.5-2.4 1.7-.6.1-1.4.2-4.1-.9-3.5-1.4-5.7-5-5.9-5.2-.2-.2-1.4-1.9-1.4-3.6s.9-2.5 1.2-2.9c.3-.3.7-.4.9-.4h.6c.2 0 .5-.1.7.6.3.7.9 2.4 1 2.5.1.2.1.4 0 .6-.1.2-.2.4-.4.6l-.6.7c-.2.2-.4.4-.2.8.2.4 1 1.7 2.2 2.7 1.5 1.3 2.8 1.7 3.2 1.9.4.2.6.1.9-.1.2-.3 1-1.2 1.3-1.6.3-.4.5-.3.9-.2.4.1 2.1 1 2.5 1.2.4.2.6.3.7.5.1.1.1.7-.2 1.5z"/></svg>
+    Chamar no WhatsApp
+  </a>
 </section>
 
 <section id="gira" class="pagina">
