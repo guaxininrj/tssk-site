@@ -21,19 +21,19 @@
 
   /* ===== MENU ===== */
   .navwrap{position:sticky;top:0;z-index:100;overflow:hidden;
-    background:rgba(8,8,9,.92);
-    border-bottom:1px solid rgba(0,100,180,.45);box-shadow:0 6px 24px rgba(0,0,0,.6)}
+    background:linear-gradient(90deg,#00c25f 0%,#e60000 50%,#0072d6 100%);
+    border-bottom:1px solid rgba(0,0,0,.25);box-shadow:0 6px 24px rgba(0,0,0,.6)}
   nav{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;padding:12px 16px}
-  nav a{color:var(--prata);text-decoration:none;font-weight:700;font-size:.85rem;letter-spacing:.1em;
+  nav a{color:#083d33;text-decoration:none;font-weight:700;font-size:.85rem;letter-spacing:.1em;
     text-transform:uppercase;padding:8px 16px;border-radius:10px;transition:.25s;
-    background:linear-gradient(180deg,rgba(0,100,180,.16),rgba(0,168,89,.07));
-    border:1px solid rgba(0,100,180,.55);
-    box-shadow:0 3px 10px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.07)}
-  nav a:hover{color:#fff;border-color:rgba(0,168,89,.8);
-    box-shadow:0 0 18px rgba(0,168,89,.35), inset 0 0 0 1px rgba(0,168,89,.5)}
-  nav a.ativo{color:#fff;background:linear-gradient(180deg,rgba(212,0,0,.30),rgba(212,0,0,.12));
-    border-color:rgba(212,0,0,.8);
-    box-shadow:0 0 18px rgba(212,0,0,.45), inset 0 0 0 1px rgba(212,0,0,.7)}
+    background:#d9f7f0;
+    border:1px solid rgba(255,255,255,.75);
+    box-shadow:0 3px 10px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.6)}
+  nav a:hover{background:#f0fffb;
+    box-shadow:0 0 16px rgba(255,255,255,.5), inset 0 1px 0 rgba(255,255,255,.8)}
+  nav a.ativo{color:#000;background:#fff;
+    border-color:#fff;
+    box-shadow:0 0 20px rgba(255,255,255,.75), inset 0 0 0 1px #fff}
 
   /* feixe tricolor correndo na linha do menu */
   .navwrap::after{content:"";position:absolute;bottom:-1px;left:0;height:2px;width:34%;
@@ -87,6 +87,13 @@
   .em-breve{border:1px dashed rgba(0,100,180,.5);border-radius:16px;padding:48px 24px;text-align:center;
     color:var(--cinza);letter-spacing:.2em;text-transform:uppercase;background:var(--card)}
 
+  /* ===== BOTÃO ZAP ===== */
+  .btn-zap{display:inline-flex;align-items:center;gap:10px;background:#0e8a3a;color:#fff;
+    font-weight:800;font-size:1.05rem;text-decoration:none;padding:15px 34px;border-radius:14px;
+    box-shadow:0 0 22px rgba(20,150,70,.45),0 12px 30px rgba(0,0,0,.6);transition:.25s;margin-top:10px}
+  .btn-zap:hover{transform:translateY(-3px);box-shadow:0 0 34px rgba(20,150,70,.65),0 16px 40px rgba(0,0,0,.7)}
+  .btn-zap svg{width:22px;height:22px;fill:#fff}
+
   footer{text-align:center;padding:24px;color:var(--cinza);font-size:.85rem;letter-spacing:.15em;
     border-top:1px solid rgba(0,100,180,.3);position:relative;overflow:hidden}
   footer b{color:var(--verde)}
@@ -111,7 +118,8 @@
 <nav id="menu">
   <a href="#inicio">Início</a>
   <a href="#sobre">Quem somos</a>
-  <a href="#trabalhos">Trabalhos</a>
+  <a href="#roda">Roda Cigana</a>
+  <a href="#gira">Gira de Umbanda</a>
   <a href="#contato">Contato</a>
 </nav>
 </div>
@@ -142,16 +150,25 @@
   <div class="em-breve">Em construção</div>
 </section>
 
-<section id="trabalhos" class="pagina">
-  <h2>Trabalhos</h2>
-  <p class="sub">Consultas, orientação e trabalhos espirituais.</p>
+<section id="roda" class="pagina">
+  <h2>Roda Cigana</h2>
+  <p class="sub">Consultas, orientação e trabalhos.</p>
+  <div class="em-breve">Em construção</div>
+</section>
+
+<section id="gira" class="pagina">
+  <h2>Gira de Umbanda</h2>
+  <p class="sub">Giras, datas e informações.</p>
   <div class="em-breve">Em construção</div>
 </section>
 
 <section id="contato" class="pagina">
   <h2>Contato</h2>
-  <p class="sub">Fale com a gente.</p>
-  <div class="em-breve">Em construção</div>
+  <p class="sub">Fale com a gente pelo WhatsApp — resposta o mais rápido possível.</p>
+  <a class="btn-zap" href="https://wa.me/5521975486558?text=Ol%C3%A1!%20Vim%20pelo%20site%20do%20T.S.S.K." target="_blank" rel="noopener">
+    <svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.5c1.7.9 3.7 1.5 5.8 1.5 6.6 0 12-5.4 12-12S22.6 3 16 3zm6.1 16.9c-.3.8-1.5 1.5-2.4 1.7-.6.1-1.4.2-4.1-.9-3.5-1.4-5.7-5-5.9-5.2-.2-.2-1.4-1.9-1.4-3.6s.9-2.5 1.2-2.9c.3-.3.7-.4.9-.4h.6c.2 0 .5-.1.7.6.3.7.9 2.4 1 2.5.1.2.1.4 0 .6-.1.2-.2.4-.4.6l-.6.7c-.2.2-.4.4-.2.8.2.4 1 1.7 2.2 2.7 1.5 1.3 2.8 1.7 3.2 1.9.4.2.6.1.9-.1.2-.3 1-1.2 1.3-1.6.3-.4.5-.3.9-.2.4.1 2.1 1 2.5 1.2.4.2.6.3.7.5.1.1.1.7-.2 1.5z"/></svg>
+    Chamar no WhatsApp
+  </a>
 </section>
 
 <footer><b>T.S.S.K.</b> © 2026</footer>
@@ -177,7 +194,7 @@
   });
 
   // abas
-  var ids = ['inicio','sobre','trabalhos','contato'];
+  var ids = ['inicio','sobre','roda','gira','contato'];
   function mostrar(id){
     if (ids.indexOf(id) < 0) id = 'inicio';
     document.querySelectorAll('.pagina').forEach(function(s){ s.classList.remove('ativa'); });
