@@ -24,16 +24,18 @@
     background:linear-gradient(90deg,#00c25f 0%,#e60000 50%,#0072d6 100%);
     border-bottom:1px solid rgba(0,0,0,.25);box-shadow:0 6px 24px rgba(0,0,0,.6)}
   nav{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;padding:12px 16px}
-  nav a{color:#083d33;text-decoration:none;font-weight:700;font-size:.85rem;letter-spacing:.1em;
-    text-transform:uppercase;padding:8px 16px;border-radius:10px;transition:.25s;
-    background:#d9f7f0;
-    border:1px solid rgba(255,255,255,.75);
-    box-shadow:0 3px 10px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.6)}
-  nav a:hover{background:#f0fffb;
-    box-shadow:0 0 16px rgba(255,255,255,.5), inset 0 1px 0 rgba(255,255,255,.8)}
-  nav a.ativo{color:#000;background:#fff;
-    border-color:#fff;
-    box-shadow:0 0 20px rgba(255,255,255,.75), inset 0 0 0 1px #fff}
+  nav a{text-decoration:none;font-weight:700;font-size:.72rem;letter-spacing:.1em;
+    text-transform:uppercase;padding:6px 15px;border-radius:999px;transition:.25s;
+    background:#000;
+    border:1px solid currentColor;
+    box-shadow:0 3px 10px rgba(0,0,0,.4)}
+  nav a:nth-child(5n+1){color:#ff2e2e}
+  nav a:nth-child(5n+2){color:#3f96ff}
+  nav a:nth-child(5n+3){color:#00d46a}
+  nav a:nth-child(5n+4){color:#ff2e2e}
+  nav a:nth-child(5n+5){color:#3f96ff}
+  nav a:hover{box-shadow:0 0 14px currentColor}
+  nav a.ativo{background:#141414;box-shadow:0 0 16px currentColor, inset 0 0 0 1px currentColor}
 
   /* feixe tricolor correndo na linha do menu */
   .navwrap::after{content:"";position:absolute;bottom:-1px;left:0;height:2px;width:34%;
@@ -44,7 +46,8 @@
 
   /* ===== HERO — VÍDEO TELA CHEIA ===== */
   header{position:relative;height:calc(100vh - 58px);height:calc(100dvh - 58px);overflow:hidden}
-  .video-fundo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+  .video-fundo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;
+    transform:translateZ(0);will-change:transform}
   .veu{position:absolute;inset:0;pointer-events:none;
     background:linear-gradient(180deg,rgba(6,6,7,.55) 0%,transparent 25%,transparent 70%,rgba(6,6,7,.85) 100%)}
   /* bandeira cigana com transparência baixa por cima do vídeo */
@@ -93,6 +96,13 @@
     box-shadow:0 0 22px rgba(20,150,70,.45),0 12px 30px rgba(0,0,0,.6);transition:.25s;margin-top:10px}
   .btn-zap:hover{transform:translateY(-3px);box-shadow:0 0 34px rgba(20,150,70,.65),0 16px 40px rgba(0,0,0,.7)}
   .btn-zap svg{width:22px;height:22px;fill:#fff}
+
+  /* fundo verde água claro nas páginas internas */
+  body.claro{background-color:#dff8f2}
+  body.claro h2{color:#083d33}
+  body.claro .sub{color:#3f6f64}
+  body.claro .em-breve{background:#ffffff;border-color:rgba(0,100,180,.35);color:#8aa39c}
+  body.claro footer{color:#5c7a72;border-top-color:rgba(0,100,180,.25)}
 
   footer{text-align:center;padding:24px;color:var(--cinza);font-size:.85rem;letter-spacing:.15em;
     border-top:1px solid rgba(0,100,180,.3);position:relative;overflow:hidden}
@@ -202,6 +212,7 @@
     document.querySelectorAll('nav a').forEach(function(a){
       a.classList.toggle('ativo', a.getAttribute('href') === '#' + id);
     });
+    document.body.classList.toggle('claro', id !== 'inicio');
     if (id === 'inicio') { v.play().catch(function(){}); } else { v.pause(); }
     window.scrollTo(0,0);
   }
