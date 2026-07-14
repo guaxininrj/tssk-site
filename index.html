@@ -135,12 +135,9 @@
 </div>
 
 <header id="inicio" class="pagina">
-  <video id="vfundo" class="video-fundo" autoplay muted loop playsinline poster="tssk-poster.jpg">
-    <source src="tssk-home.mp4" type="video/mp4">
+  <video id="vfundo" class="video-fundo" autoplay muted loop playsinline poster="tssk-poster2.jpg">
+    <source src="tssk-home-fx.mp4" type="video/mp4">
   </video>
-  <div class="bandeira"></div>
-  <img class="roda" src="roda.png" alt="">
-  <div class="listras"></div>
   <div class="veu"></div>
   <img class="logo-roda" src="logo-tssk.png" alt="T.S.S.K.">
   <div class="hero-conteudo">
@@ -188,7 +185,7 @@
   // vídeo menor no celular
   var v = document.getElementById('vfundo');
   if (window.innerWidth <= 640) {
-    v.querySelector('source').src = 'tssk-home-mobile.mp4';
+    v.querySelector('source').src = 'tssk-home-fx-mobile.mp4';
     v.load(); v.play().catch(function(){});
   }
 
